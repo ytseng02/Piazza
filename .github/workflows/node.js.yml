@@ -10,7 +10,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build:
+  Build_NodeJS:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,13 +22,23 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-  test:
+  JWT_Handshake:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [18.x]
     steps:
-      - name: Install Jest
-        run: npm install jest
-      - name: Test Application
-        run: npm test
+      - name: Authenticate Login
+        run: ./Tests/login.js
+  Unit_Testing:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: Run Unit Test
+        run: ./Tests/unitTesting.js
+      - name: Run Integration Tests
+        run: ./Test/integrationTesting.js
+  #Deploy_Docker:
+  #Deploy_Kubernetes:  
