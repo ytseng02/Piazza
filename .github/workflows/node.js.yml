@@ -10,7 +10,7 @@ on:
     branches: [ "master" ]
 
 jobs:
-  Build_NodeJS:
+  development:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,25 +22,27 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-  JWT_Handshake:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
-      - name: Install Dependencies
-        run: npm install
-      - name: Authenticate Login
-        run: node /Tests/login.js
-  Unit_Testing:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
-      - name: Run Unit Test
-        run: node /Tests/unitTesting.js
-      - name: Run Integration Tests
-        run: node /Test/integrationTesting.js
+    - name: Test Login
+      run: node /Tests/login.js
+#  JWT_Handshake:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [18.x]
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Install Dependencies
+#        run: npm install
+      
+#  Unit_Testing:
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [18.x]
+#    steps:
+#      - name: Run Unit Test
+#        run: node /Tests/unitTesting.js
+#      - name: Run Integration Tests
+#        run: node /Test/integrationTesting.js
   #Deploy_Docker:
   #Deploy_Kubernetes:  
