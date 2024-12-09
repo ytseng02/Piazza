@@ -24,6 +24,10 @@ jobs:
         cache: 'npm'
     - name: Install Dependencies
       run: npm install
+    - name: Enable Debugging
+      run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+    - name: List Files
+      run: ls -R
     - name: Test Login
       run: node /Tests/login.js
     - name: Run Unit Test
