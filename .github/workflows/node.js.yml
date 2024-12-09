@@ -29,7 +29,7 @@ jobs:
         node-version: [18.x]
     steps:
       - name: Authenticate Login
-        run: node Tests/login.js
+        run: node /Tests/login.js
   Unit_Testing:
     runs-on: ubuntu-latest
     strategy:
@@ -37,8 +37,8 @@ jobs:
         node-version: [18.x]
     steps:
       - name: Run Unit Test
-        run: node Tests/unitTesting.js
+        run: node /Tests/unitTesting.js
       - name: Run Integration Tests
-        run: node Test/integrationTesting.js
+        run: node /Test/integrationTesting.js
   #Deploy_Docker:
   #Deploy_Kubernetes:  
