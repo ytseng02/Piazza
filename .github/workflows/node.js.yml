@@ -40,6 +40,8 @@ jobs:
       run: docker build . --file Dockerfile -t blairwday/piazza:latest
 
     - name: Push Image to DockerHub
-      run: docker push blairwday/piazza:latest
+      run: |
+        docker login -u blairwday -p $({secrets.DOCKER_HUB_TOKEN})
+        docker push blairwday/piazza:latest
       #Deploy_Docker:
       #Deploy_Kubernetes:  
