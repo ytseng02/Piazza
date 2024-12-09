@@ -28,6 +28,8 @@ jobs:
       matrix:
         node-version: [18.x]
     steps:
+      - name: Install Dependencies
+        run: npm install
       - name: Authenticate Login
         run: node /Tests/login.js
   Unit_Testing:
