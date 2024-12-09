@@ -29,10 +29,10 @@ jobs:
     - name: List Files
       run: ls -R
     - name: Test Login
-      run: node /Tests/login.js
+      run: node ./Tests/login.js
     - name: Run Unit Test
-      run: node /Tests/unitTesting.js
+      run: node ./Tests/unitTesting.js
     - name: Run Integration Tests
-      run: node /Test/integrationTesting.js
+      run: node ./Test/integrationTesting.js
       #Deploy_Docker:
       #Deploy_Kubernetes:  
