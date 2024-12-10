@@ -3,12 +3,23 @@ const router = express.Router()
 
 const Post = require('../models/Posts')
 
-router.get('/', async(req, res)=>{
+// POST (Create data)
+router.post('/', async(req, res)=>{
+    const postData = new Post({
+        post_id:req.body.post_id,
+        post_owner:req.body.post_owner,
+        title:req.body.title,
+        topic:req.body.topic,
+        timestamp:req.body.timestamp,
+        postBody:req.body.postBody,
+        expiration_time:req.body.expiration_time,
+        status:req.body.status
+    })
     try{
-        const posts = await Post.find()
-        res.send(posts)
+        const postToSave = await postData.save()
+        res.send(postToSave)
     }catch(err){
-        res.status(400).send({message:err})
+        res.send({message:err})
     }
 })
 
