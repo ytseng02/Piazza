@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
+const { v4: uuidv4 } = require('uuid')
 
 const postSchema = mongoose.Schema({
     post_id:{
         type:String,
-        required: true
+        required: true,
+        default: uuidv4,
     },
     post_owner:{
         type:String
@@ -30,12 +32,6 @@ const postSchema = mongoose.Schema({
         type:String,
         enum: ['Live', 'Expired'],
         default: 'Live'
-    },
-    like_sum:{
-        type:Number
-    },
-    dislike_sum:{
-        type:Number
     }
 })
 
