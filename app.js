@@ -11,11 +11,13 @@ const expressInstance = express();
 require('dotenv/config');
 const authRoute = require('./routes/auth');
 const postRoute = require('./routes/post');
+const interactionRoute = require('./routes/interaction');
 
 expressInstance.use(bodyParser.json());
 
 expressInstance.use('/api/post', postRoute);
 expressInstance.use('/api/user', authRoute);
+expressInstance.use('/api/interaction', interactionRoute);
 
 mongoose.connect(process.env.DB_CONNECTOR).then(()=>{
     console.log('Your mongoDB connector is on...');
