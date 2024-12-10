@@ -41,7 +41,7 @@ jobs:
 
     - name: Push Image to DockerHub
       run: |
-        docker login -u blairwday -p $({secrets.DOCKER_HUB_TOKEN})
+        docker login -u blairwday -p ${{secrets.DOCKER_HUB_TOKEN}}
         docker push blairwday/piazza:latest
       #Deploy_Docker:
       #Deploy_Kubernetes:  
