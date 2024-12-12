@@ -1,0 +1,47 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push: 
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  development:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: Install Dependencies
+      run: npm install
+      
+    - name: Test Login
+      run: node Tests/login.js
+      
+    - name: Run Unit Tests
+      run: node Tests/unitTesting.js
+      
+    - name: Run Integration Tests
+      run: node Tests/integrationTesting.js
+    
+    - name: Build Docker Image
+      run: docker build . --file Dockerfile -t blairwday/piazza:latest
+
+    - name: Push Image to DockerHub
+      run: |
+        docker login -u blairwday -p ${{secrets.DOCKER_HUB_TOKEN}}
+        docker push blairwday/piazza:latest
+      #Deploy_Docker:
+      #Deploy_Kubernetes:  
