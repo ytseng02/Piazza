@@ -9,8 +9,8 @@ const expressInstance = express();
 
 // Environment and Modules
 require('dotenv/config');
-const authRoute = require('./routes/auth');
-const postRoute = require('./routes/post');
+const authRoute = require('/usr/src/app/routes/auth');
+const postRoute = require('/usr/src/app/routes/post');
 
 expressInstance.use(bodyParser.json());
 
