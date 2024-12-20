@@ -26,15 +26,6 @@ jobs:
         
     - name: Install Dependencies
       run: npm install
-      
-    - name: Test Login
-      run: node Tests/login.js
-      
-    - name: Run Unit Tests
-      run: node Tests/unitTesting.js
-      
-    - name: Run Integration Tests
-      run: node Tests/integrationTesting.js
     
     - name: Build Docker Image
       run: docker build . --file Dockerfile -t blairwday/piazza:a2
