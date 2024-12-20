@@ -34,5 +34,3 @@ jobs:
       run: |
         docker login -u lucia231 -p ${{secrets.DOCKER_HUB_TOKEN}}
         docker push lucia231/piazza:latest
-      #Deploy_Docker:
-      #Deploy_Kubernetes:  
