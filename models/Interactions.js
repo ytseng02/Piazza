@@ -1,21 +1,26 @@
 const mongoose = require('mongoose')
 
 const interactionSchema = mongoose.Schema({
-    post_id:{
+    postId:{
+        type:String,
+    },
+    username:{
         type:String,
         required: true
     },
-    user_name:{
+    likes:{
+        type:Number,
+        default:0
+    },
+    dislikes:{
+        type:Number,
+        default:0
+    },
+    comments:[{
         type:String
-    },
-    like:{
-        type:Boolean
-    },
-    dislike:{
-        type:Boolean
-    },
-    comment:{
-        type:String
+    }],
+    time_left:{
+        type:Number
     }
 })
 
