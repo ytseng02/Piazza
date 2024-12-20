@@ -1,6 +1,6 @@
 FROM node:18
 WORKDIR /usr/src/app
-COPY package*.json app.js ./
+COPY . ./
 RUN npm install
 RUN cd /usr/src/app/
 EXPOSE 3000
